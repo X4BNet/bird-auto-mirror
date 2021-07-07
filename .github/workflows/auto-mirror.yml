@@ -42,3 +42,4 @@ jobs:
           # git checkout $tag
           sudo apt-get install debhelper docbook-xsl libssh-gcrypt-dev linuxdoc-tools-latex opensp quilt texlive-latex-extra xsltproc
           apkg build
+          ls -las pkg/pkgs/ubuntu-20.04/bird2_*
