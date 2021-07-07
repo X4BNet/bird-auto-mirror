@@ -42,6 +42,7 @@ jobs:
           image: debian:buster
           run: |
             cd /work/bird
+            apt-get update
             apt-get install -y sudo debhelper docbook-xsl libssh-gcrypt-dev linuxdoc-tools-latex opensp quilt texlive-latex-extra xsltproc python3-pip python3-setuptools
             pip3 install apkg
             apkg build
