@@ -29,15 +29,14 @@ jobs:
           repository: "X4BNet/bird"
           path: bird
           fetch-depth: 0
-      - name: prepare to build
-        run: |
       - name: prepare environment
         run: |
           cd "$GITHUB_WORKSPACE/bird"
           tag=$(git tag -l --sort -version:refname | grep '^v' | head -n 1)
           echo "tagged: $tag"
           git checkout $tag
-      - uses: addnab/docker-run-action@v3
+      - name: Build for Debian Buster
+        uses: addnab/docker-run-action@v3
         with:
           options: -v ${{ github.workspace }}:/work
           image: debian:buster
