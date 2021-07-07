@@ -2,6 +2,7 @@ on:
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
+  push:
 jobs:
   git-sync:
     runs-on: ubuntu-latest
