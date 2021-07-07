@@ -57,4 +57,4 @@ jobs:
         run: |
          sudo apt install python3-pip dpkg-dev apt-utils gpg
          sudo pip3 install git+https://github.com/rpatterson/github-apt-repos.git
-         github-apt-repos --gpg-user-id EC11E16ADE1F26A0797878A86E0BC301E2CF0280 --deb-dir pkg/pkgs
+         github-apt-repos --gpg-user-id EC11E16ADE1F26A0797878A86E0BC301E2CF0280 --deb-dir pkg/pkgs --github-apt-repo X4BNet/bird-mirror-automation --github-download-tag repository --github-user splitice --github-token "$GITHUB_TOKEN"
