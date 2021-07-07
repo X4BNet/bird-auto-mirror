@@ -34,7 +34,7 @@ jobs:
           cd "$GITHUB_WORKSPACE/bird"
           tag=$(git tag -l --sort -version:refname | grep '^v' | head -n 1)
           echo "tagged: $tag"
-          git checkout $tag
+          # git checkout $tag
       - name: Build for Debian Buster
         uses: addnab/docker-run-action@v3
         with:
