@@ -65,3 +65,5 @@ jobs:
          sudo pip3 install git+https://github.com/rpatterson/github-apt-repos.git
          sudo chmod 0777 output -R
          github-apt-repos --gpg-user-id EC11E16ADE1F26A0797878A86E0BC301E2CF0280 --deb-dir output --github-apt-repo X4BNet/bird-mirror-automation --github-download-tag repository --github-token "$GITHUB_TOKEN"
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
