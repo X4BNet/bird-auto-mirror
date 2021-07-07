@@ -31,8 +31,6 @@ jobs:
           fetch-depth: 0
       - name: prepare to build
         run: |
-         sudo apt-get install -y python3-pip python3-setuptools
-         sudo pip3 install apkg
       - name: prepare environment
         run: |
           cd "$GITHUB_WORKSPACE/bird"
@@ -45,6 +43,11 @@ jobs:
           image: debian:buster
           run: |
             cd /work/bird
-            sudo apt-get install debhelper docbook-xsl libssh-gcrypt-dev linuxdoc-tools-latex opensp quilt texlive-latex-extra xsltproc
+            apt-get install -y sudo debhelper docbook-xsl libssh-gcrypt-dev linuxdoc-tools-latex opensp quilt texlive-latex-extra xsltproc python3-pip python3-setuptools
+            pip3 install apkg
             apkg build
             find pkg/pkgs
+      - name: build repository
+        run: |
+         sudo apt install python-pip dpkg-dev apt-utils gpg
+         sudo pip install https://github.com/rpatterson/github-apt-repos.git
