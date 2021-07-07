@@ -55,7 +55,7 @@ jobs:
             apkg build
             find pkg/pkgs
             mkdir -p output
-            find pkg/pkgs -iname *.deb -type f | awk '{print "cp "$1" output/"}'
+            find pkg/pkgs -iname *.deb -type f | awk '{print "cp "$1" output/"}' | bash
       - name: build repository
         run: |
          cd "$GITHUB_WORKSPACE/bird"
