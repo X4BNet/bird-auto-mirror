@@ -28,7 +28,7 @@ jobs:
         with:
           repository: "X4BNet/bird"
           path: bird
-          fetch-depth: 250
+          fetch-depth: 0
       - name: prepare to build
         run: |
          sudo apt-get install -y python3-pip python3-setuptools
@@ -38,3 +38,7 @@ jobs:
           cd "$GITHUB_WORKSPACE/bird"
           tag=$(git tag -l --sort -version:refname | grep '^v' | head -n 1)
           echo "tagged: $tag"
+
+          # git checkout $tag
+          cd distro
+          apkg build
