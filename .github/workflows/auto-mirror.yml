@@ -40,5 +40,4 @@ jobs:
           echo "tagged: $tag"
 
           # git checkout $tag
-          cd distro
           apkg build
