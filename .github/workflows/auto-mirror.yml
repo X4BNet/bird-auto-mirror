@@ -13,6 +13,8 @@ jobs:
         with:
           gpg-private-key: ${{ secrets.REPO_SIGNING_KEY }}
           passphrase: ""
+      - run: |
+         gpg --list-secret-keys
       - name: git-sync (branches)
         uses: wei/git-sync@v3
         with:
