@@ -15,3 +15,11 @@ jobs:
           destination_repo: "X4BNet/bird"
           destination_branch: "refs/heads/*"
           destination_ssh_private_key: ${{ secrets.DESTINATION_SSH_PRIVATE_KEY }}
+      - name: git-sync
+        uses: wei/git-sync@v3
+        with:
+          source_repo: "https://gitlab.nic.cz/labs/bird.git"
+          destination_repo: "X4BNet/bird"
+          source_branch: "refs/tags/*"
+          destination_branch: "refs/tags/*"
+          destination_ssh_private_key: ${{ secrets.DESTINATION_SSH_PRIVATE_KEY }}
