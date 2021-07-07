@@ -53,6 +53,7 @@ jobs:
         uses: crazy-max/ghaction-import-gpg@v3
         with:
           gpg-private-key: ${{ secrets.REPO_SIGNING_KEY }}
+          passphrase: ""
       - name: build repository
         run: |
          sudo apt install python3-pip dpkg-dev apt-utils gpg
