@@ -49,13 +49,15 @@ jobs:
           run: |
             cd /work/bird
             apt-get update
-            apt-get install -y sudo debhelper docbook-xsl libssh-gcrypt-dev linuxdoc-tools-latex opensp quilt texlive-latex-extra xsltproc python3-pip python3-setuptools git build-essential
+            apt-get install -y sudo debhelper docbook-xsl libssh-gcrypt-dev linuxdoc-tools-latex opensp quilt texlive-latex-extra xsltproc python3-pip python3-setuptools git build-essential bison flex libncurses5-dev libreadline-dev
             pip3 install apkg
             ls -las .
             apkg build
             find pkg/pkgs
+            mkdir -p output
+            find pkg/pkgs -inname *.deb | awk '{print "cp "$1" output/"}'
       - name: build repository
         run: |
          sudo apt install python3-pip dpkg-dev apt-utils gpg
          sudo pip3 install git+https://github.com/rpatterson/github-apt-repos.git
-         github-apt-repos --gpg-user-id EC11E16ADE1F26A0797878A86E0BC301E2CF0280 --deb-dir pkg/pkgs --github-apt-repo X4BNet/bird-mirror-automation --github-download-tag repository --github-token "$GITHUB_TOKEN"
+         github-apt-repos --gpg-user-id EC11E16ADE1F26A0797878A86E0BC301E2CF0280 --deb-dir output --github-apt-repo X4BNet/bird-mirror-automation --github-download-tag repository --github-token "$GITHUB_TOKEN"
