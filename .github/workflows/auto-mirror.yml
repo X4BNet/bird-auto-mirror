@@ -28,6 +28,7 @@ jobs:
         with:
           repository: "X4BNet/bird"
           path: bird
+          fetch-depth: 250
       - name: do build
         run: |
           cd "$GITHUB_WORKSPACE/bird"
