@@ -33,13 +33,18 @@ jobs:
         run: |
          sudo apt-get install -y python3-pip python3-setuptools
          sudo pip3 install apkg
-      - name: do build
+      - name: prepare environment
         run: |
           cd "$GITHUB_WORKSPACE/bird"
           tag=$(git tag -l --sort -version:refname | grep '^v' | head -n 1)
           echo "tagged: $tag"
-
-          # git checkout $tag
-          sudo apt-get install debhelper docbook-xsl libssh-gcrypt-dev linuxdoc-tools-latex opensp quilt texlive-latex-extra xsltproc
-          apkg build
-          ls -las pkg/pkgs/ubuntu-20.04/bird2_*
+          git checkout $tag
+      - uses: addnab/docker-run-action@v3
+        with:
+          options: -v ${{ github.workspace }}:/work
+          image: debian:buster
+          run: |
+            cd /work/bird
+            sudo apt-get install debhelper docbook-xsl libssh-gcrypt-dev linuxdoc-tools-latex opensp quilt texlive-latex-extra xsltproc
+            apkg build
+            find pkg/pkgs
