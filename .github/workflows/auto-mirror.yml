@@ -40,5 +40,5 @@ jobs:
           echo "tagged: $tag"
 
           # git checkout $tag
-          apt-get install debhelper docbook-xsl libssh-gcrypt-dev linuxdoc-tools-latex opensp quilt texlive-latex-extra xsltproc
+          sudo apt-get install debhelper docbook-xsl libssh-gcrypt-dev linuxdoc-tools-latex opensp quilt texlive-latex-extra xsltproc
           apkg build
