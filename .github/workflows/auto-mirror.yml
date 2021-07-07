@@ -48,7 +48,13 @@ jobs:
             ls -las .
             apkg build
             find pkg/pkgs
+      - name: Import GPG key
+        id: import_gpg
+        uses: crazy-max/ghaction-import-gpg@v3
+        with:
+          gpg-private-key: ${{ secrets.REPO_SIGNING_KEY }}
       - name: build repository
         run: |
-         sudo apt install python-pip dpkg-dev apt-utils gpg
-         sudo pip install https://github.com/rpatterson/github-apt-repos.git
+         sudo apt install python3-pip dpkg-dev apt-utils gpg
+         sudo pip3 install git+https://github.com/rpatterson/github-apt-repos.git
+         github-apt-repos --gpg-user-id EC11E16ADE1F26A0797878A86E0BC301E2CF0280 --deb-dir pkg/pkgs
