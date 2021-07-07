@@ -45,6 +45,7 @@ jobs:
             apt-get update
             apt-get install -y sudo debhelper docbook-xsl libssh-gcrypt-dev linuxdoc-tools-latex opensp quilt texlive-latex-extra xsltproc python3-pip python3-setuptools git build-essential
             pip3 install apkg
+            ls -las .
             apkg build
             find pkg/pkgs
       - name: build repository
